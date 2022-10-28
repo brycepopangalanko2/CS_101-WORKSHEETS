@@ -1,0 +1,31 @@
+#Subset Setosa
+
+setosa_subset <- subset(iris, Species == 'setosa')
+setosa_subset
+
+#Mean of the Setosa species
+
+setosa_mn <- mean(colMeans(setosa_subset[,1:4]))
+setosa_mn
+
+#Mean of the characteristics of setosa species
+
+setosachar_mean <- colMeans(setosa_subset[,1:4])
+setosachar_mean
+
+# Sepal Length
+
+setle_mean <- c(setosa_subset$Sepal.Length)
+mean(setsl_mean)
+
+# Sepal Width
+setwi_mean <- c(setosa_subset$Sepal.Width)
+mean(setwi_mean)
+
+# Petal Length
+setle_mean <- c(setosa_subset$Petal.Length)
+mean(setle_mean)
+
+# Petal Width 
+setwi_mean <- c(setosa_subset$Petal.Width)
+mean(setwi_mean)

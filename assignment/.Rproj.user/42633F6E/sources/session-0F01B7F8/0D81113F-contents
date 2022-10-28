@@ -1,0 +1,57 @@
+iris_data <- data.frame(iris)
+iris_data
+
+iris_data[iris_data$Species == 'versicolor' ,]
+
+sbst <- subset(iris_data, Species == 'versicolor' )
+sbst
+
+lmg <- iris$Sepal.Length[1:50]
+lmg
+
+lmg1 <- iris$Sepal.Width[1:50]
+lmg1 
+
+lmg2 <- iris$Petal.Length[1:50]
+lmg2
+
+lmg4 <- iris$Petal.Width[1:50]
+lmg4
+
+mn <- c(lmg, lmg1, lmg2, lmg4)
+mn
+
+lmg <- iris$Sepal.Length[51:100]
+lmg
+
+lmg1 <- iris$Sepal.Width[51:100]
+lmg1 
+
+lmg2 <- iris$Petal.Length[51:100]
+lmg2
+
+lmg4 <- iris$Petal.Width[51:100]
+lmg4
+
+mn2 <- c(lmg, lmg1, lmg2, lmg4)
+mn2
+
+lmg <- iris$Sepal.Length[101:150]
+lmg
+
+lmg1 <- iris$Sepal.Width[101:150]
+lmg1 
+
+lmg2 <- iris$Petal.Length[101:150]
+lmg2
+
+lmg4 <- iris$Petal.Width[101:150]
+lmg4
+
+mn3 <- c(lmg, lmg1, lmg2, lmg4)
+mn3
+
+mn5 <- c(mn, mn2, mn3)
+mn5
+
+mean(mn5)

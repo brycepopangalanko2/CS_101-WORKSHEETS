@@ -1,0 +1,25 @@
+iris_data <- data.frame(iris)
+iris_data
+
+iris_data[iris_data$Species == 'setosa' ,]
+
+sbst <- subset(iris_data, Species == 'setosa' )
+sbst
+
+lmg <- iris$Sepal.Length[1:50]
+lmg
+
+lmg1 <- iris$Sepal.Width[1:50]
+lmg1 
+
+lmg2 <- iris$Petal.Length[1:50]
+lmg2
+
+lmg4 <- iris$Petal.Width[1:50]
+lmg4
+
+mn <- c(lmg, lmg1, lmg2, lmg4)
+mn
+
+mean(mn)
+
