@@ -1,0 +1,276 @@
+Using Vectors
+
+1. There is a built-in vector LETTERS contains the uppercase letters of the alphabet
+and letters which contains the lowercase letters of the alphabet.
+
+\hfill
+```{R}
+LETTERS
+## [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S"
+## [20] "T" "U" "V" "W" "X" "Y" "Z"
+```
+
+```{R}
+letters
+## [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+## [20] "t" "u" "v" "w" "x" "y" "z"
+```
+Based on the above vector LETTERS:
+  a. You need to produce a vector that contains the first 11 letters.
+
+```{R}
+let <- LETTERS[1:11]
+let
+
+```
+
+b. Produce a vector that contains the odd numbered letters.
+```{R}
+odd <- LETTERS [1:26 %% 2 == 1]
+odd
+```
+c. Produce a vector that contains the vowels
+
+
+```{R}
+vowels <- LETTERS [c(1,5,9,15,21)]
+vowels
+```
+Based on the above vector letters:
+  
+  d. Produce a vector that contains the last 5 lowercase letters.
+```{R}
+lower <- letters[22:26]
+lower
+```
+
+e. Produce a vector that contains letters between 15 to 24 letters in lowercase.
+
+```{R}
+lowercase <- letters[16:23]
+lowercase
+```
+
+
+2. Create a vector with the average temperatures in April for Tuguegarao City, Manila,
+Iloilo City, Tacloban, Samal Island, and Davao City. The average temperatures in
+Celcius are 42, 39, 34, 34, 30, and 27 degrees.
+
+a. What is the R code and its result for creating a character vector for the city/town of
+Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island, and Davao City? Name the
+object as city. The names should follow the same order as in the instruction.
+
+```{R}
+city <-c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+city
+```
+
+b. The average temperatures in Celcius are 42, 39, 34, 34, 30, and 27 degrees. Name the object as temp.
+Write the R code and its output. Numbers should also follow what is in the instruction.
+
+```{R}
+temp <-c(42, 39, 34, 34, 30, 27)
+temp
+```
+
+c. Associate the temperature temp with the city by using names() function. What is
+the R code and its result
+
+```{R}
+names(temp) <- city
+temp
+```
+
+e. From the answer in d, what is the content of index 5 and index 6? What is its R code?
+  ```{R}
+names_in <- temp[5:6]
+names_in
+```
+
+Using Matrices
+• Matrix can be created by specifying the rows and columns.
+
+```{R}
+# row = 2
+matrix(c(5,6,7,4,3,2,1,2,3,7,8,9),nrow = 2)
+## [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,] 5 7 3 1 3 8
+## [2,] 6 4 2 2 7 9
+# row = 3 and column = 2
+matrix(data = c(3,4,5,6,7,8),3,2)
+## [,1] [,2]
+## [1,] 3 6
+## [2,] 4 7
+## [3,] 5 8
+# creating a diagonal matrix where x value will always be 1
+diag(1,nrow = 6,ncol = 5)
+## [,1] [,2] [,3] [,4] [,5]
+## [1,] 1 0 0 0 0
+## [2,] 0 1 0 0 0
+## [3,] 0 0 1 0 0
+## [4,] 0 0 0 1 0
+## [5,] 0 0 0 0 1
+## [6,] 0 0 0 0 0
+diag(6)
+## [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,] 1 0 0 0 0 0
+## [2,] 0 1 0 0 0 0
+## [3,] 0 0 1 0 0 0
+## [4,] 0 0 0 1 0 0
+## [5,] 0 0 0 0 1 0
+## [6,] 0 0 0 0 0 1
+```
+
+2. Create a matrix of one to eight and eleven to fourteen with four columns and three
+rows.
+
+a. What will be the R code for the #2 question and its result?
+
+```{R}
+output <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+output
+```
+
+b. Multiply the matrix by two. What is its R code and its result?
+  ```{R}
+table1 <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+output <- table1 * 2
+output
+```
+
+c. What is the content of row 2? What is its R code?
+  
+  ```{R}
+output <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+output
+```
+
+```{R}
+row <- c(output[2,1], output[2,2], output[2,3], output[2,4])
+row
+```
+
+d. What will be the R code if you want to display the column 3 and column 4 in row 1 and row 2? What
+is its output?
+  
+  ```{R}
+output <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+output
+```
+```{R}
+con <- c(output[3,2], output[3,3])
+con
+```
+
+f. What is the R code is you want to display only the columns 4? What is its output?
+  
+  ```{R}
+output <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+output
+```
+```{R}
+con <- c(output[1,4], output[2,4], output[3,4])
+con
+```
+
+g. Name the rows as isa, dalawa, tatlo and columns as uno, dos, tres, quatro for the matrix that was created in b.‘. What is its R code and corresponding output?
+  
+  ```{R}
+output <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+output
+```
+```{R}
+dimnames(output) <- list(c("isa", "dalawa", "tatlo"),c("uno", "dos", "tres", "quatro"))
+output
+```
+
+h. From the original matrix you have created in a, reshape the matrix by assigning a new dimension with dim(). New dimensions should have 2 columns and 6 rows. What will be the R code and its output?
+  
+  ```{R}
+output <- matrix(1:8, 11:14, nrow = 3, ncol = 4)
+```
+```{R}
+output
+```
+
+```{R}
+newtable <- c(1,2,3,4,5,6,7,8,11,12,13,14)
+newtable
+```
+
+```{R}
+x <- matrix(newtable, nrow = 6, ncol = 2)
+x
+```
+```{R}
+dim(x)
+```
+
+Using Arrays
+• Array can have more than two dimensions by using the array() function and dim() to
+specify the dimensions
+
+# creates a two-dimensional array containing numbers from 1 to 24 that have 3 rows and
+```{R}
+array_dta <- array(c(1:24), c(3,4,2))
+array_dta
+```
+# checking for the dimensions
+
+# row, column, dimension
+```{R}
+dim(array_dta)
+```
+#checking for the number of elements
+```{R}
+length(array_dta)
+```
+
+• Another way to create arrays
+
+```{R}
+vectorA <- c(1:24)
+# creating an array
+an_Array <- array(vectorA, dim = c(3,4,2))
+an_Array
+```
+
+3. An array contains 1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1
+
+a. Create an array for the above numeric values. Each values will be repeated twice. What will be the R code if you are to create a three-dimensional array with 4 columns and 2 rows. What will be its output?
+  
+  ```{R}
+a <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+a
+```
+```{R}
+x <- array(rep(a, 2), dim = c(2,4,3))
+x
+```
+
+
+b. How many dimensions do your array have?
+  ```{R}
+# It has 3 dimensions.
+```
+
+c. Name the rows as lowercase letters and columns as uppercase letters starting from the A. The array names should be “1st-Dimensional Array”, “2nd-Dimentional Array”, and “3rd-Dimensional Array”.What will be the R codes and its output?
+  
+  ```{R}
+a <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+a
+```
+```{R}
+v <- array(rep(a, 2), dim = c(2,4,3))
+v
+```
+
+
+
+```{R}
+dimnames(v) <- list(letters[1:2], LETTERS[1:4], c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
+v
+```
+
+
+
