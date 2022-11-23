@@ -1,0 +1,166 @@
+
+#Worksheet #3B
+
+
+#Bryce Kendric Saladar
+#BSit 2-A
+
+
+
+
+
+#1. Create a dataframe using the table below.
+
+Respondent = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+Sex = c(2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2)
+Fathers_Occupation = c(1,3,3,3,1,2,3,1,1,1,3,2,1,3,3,1,3,1,2,1)
+Person_at_Home = c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6)
+Siblings_at_school = c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2)
+Type_of_Houses = c(1,2,3,1,1,3,3,1,2,3,2,3,2,2,3,3,3,3,3,2)
+family <- data.frame(Respondent,Sex,Fathers_Occupation,Person_at_Home,Siblings_at_school,Type_of_Houses)
+family
+
+
+#b. Describe the data. Get the structure or the summary of the data.
+The data show the number of Respondents using the dataFrame as its base of organinzing and securing or linking the statistics in the table.
+
+summary(family)
+
+
+#c.Is the mean number of siblings attending is 5?
+Ans:No
+
+#d.Extract the 1st two rows and then all columns using the subsetting functions. write the codes and its output.
+
+dat <- subset(family[1:2, 1:6,drop = FALSE])
+dat
+
+
+
+#e.Extract 3rd and 5th row with 2nd and 4th column. Write the codes and its result.
+
+nien <- subset(family[c(3,5),c(2,4)])
+nien
+
+
+
+#
+f.Select the variable types of houses then the store vector that result as type_houses.Write the codes 
+
+a1 <- subset(family[c(1:20),c(2,6)])
+type_houses <- a1
+
+
+
+#g. Select only all Males respondent that their father occupation was farmer.Write the code and its output.
+
+
+a2 <- subset(family[c(1:20),c(2,3)])
+
+paning <- a2[family$Fathers_Occupation == '1',]
+paning
+
+
+
+#h. Select only all females respondent hat have greater than or equal to 5 number of sibling attending school. Write the codes and its output.
+
+a3 <- subset(family[c(1:20),c(2,5)])
+res <- a3[family$Siblings_at_school == '1',]
+res
+
+
+#2. Write a R program to create an empty data frame. Using the following codes:
+
+df = data.frame(Ints=integer(),
+                Doubles=double(),Characters=character(),
+                Logicals=logical(),
+                Factors=factor(),
+                stringsAsFactors = FALSE)
+print("Structure of the empty dataframe:")
+print(str(df))
+
+
+
+
+
+
+
+#a Describe the results.
+the following result were not found or present at the table.
+
+
+
+
+#INTERPRET THE GRAPH
+
+#Sentiments Of Tweets per day
+
+#The highest sentiment of Tweets was on July 15,2020 where negative sentiments are on high due to Trumps failure to cope to combat Covid numbering at 4000.The most Highest positive sentiments of Tweets was July 21, 2020 when Trump finally held a press conference for the Covid briefing numbering at 3500.The most highest neutral sentiments were at July 15, 2020 same day as the highest negative sentiments tweets numbering below 3000.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
