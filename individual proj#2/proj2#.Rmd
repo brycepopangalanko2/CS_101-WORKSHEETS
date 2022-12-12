@@ -1,0 +1,139 @@
+---
+title: "proj#2A"
+author: "BRYCE KENDRIC SALADAR"
+date: "2022-12-12"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+```{R}
+library("syuzhet")
+library("wordcloud")
+library("plotly")
+library("tm")
+library("tidytext")
+library("dplyr")
+library("RColorBrewer")
+library("ggplot2")
+library("magrittr")
+library("stringr")
+library("twitteR")
+```
+\hfill\break
+```{R}
+CONSUMER_SECRET <- "c4lW91jDaRUgzFAvOr0YleNYVEm17ZTnEHnMsvlDcjKSJnBJXg"
+CONSUMER_KEY <- "pgjt5UWX2uzuK6qRwHowEPPXq"
+ACCESS_SECRET <- "txachtOgZ7L0dyj9vAswZkfGjtJMfU4fVvRdAyEo3jNg0"
+ACCESS_TOKEN <- "1594899110103986176-QoH3VZuNGyLd8RBuY6cnFR4lN6obA4"
+
+setup_twitter_oauth(consumer_secret = CONSUMER_SECRET,
+                    consumer_key = CONSUMER_KEY,
+                    access_secret = ACCESS_SECRET,
+                    access_token = ACCESS_TOKEN)
+```
+#get 10000 tweets excluding retweets.
+```{R}
+trendTweets <- searchTwitter("Ukraine", n = 10000,lang = "en",
+                             since = "2022-11-24",
+                             until = "2022-12-30",retryOnRateLimit=120)
+
+```
+\hfill\break
+# Data frame
+\hfill\break
+```{R}
+ukraineDF <- twListToDF(trendTweets)
+```
+\hfill\break
+#save and load
+```{R}
+save(ukraineDF, file = "ukraineDF.Rdata")
+load(file = "ukraineDF.Rdata")
+
+saple_data <- sapply(ukraineDF, function(x) sum(is.na(x)))
+```
+\hfill\break
+#Subsetting dplyr
+```{R}
+ukraine_tweets <- ukraineDF %>%
+  select(screenName,text,created, isRetweet) %>% filter(isRetweet == FALSE)
+save(ukraine_tweets, file = "ukraine_tweetsF.Rdata")
+load(file = "ukraine_tweetsF.Rdata")
+```
+\hfill\break
+#Arrange data
+```{R}
+ukraine_tweets %>%  
+  group_by(1) %>%  
+  summarise(max = max(created), min = min(created))
+
+ukrainedata <- ukraine_tweets %>%  mutate(Created_At_Round = created %>% 
+                round(units = 'hours') %>% as.POSIXct())
+
+slava <- ukraine_tweets %>% pull(created) %>% min()
+
+ukrani <- ukraine_tweets %>% pull(created) %>% max()
+```
+\hfill\break
+#Plotting tweets using ggplot and library
+\hfill\break
+```{R}
+Slavaplot <- ggplot(ukrainedata, aes(x = Created_At_Round)) +
+  geom_histogram(aes(fill = ..count..)) +
+  theme(legend.position = "right") +
+  xlab("Time") + ylab("Number of tweets") + 
+  scale_fill_gradient(low = "grey", high = "blue")
+
+Slavaplot %>% ggplotly()
+```
+\hfill\break
+#Retweets
+```{R}
+ukraineretweets <- ukraineDF %>%
+  select(screenName,text,created, isRetweet) %>% filter(isRetweet == TRUE)
+```
+\hfill\break
+#Arranging the data
+\hfill\break
+```{r}
+ukraineretweets %>%  
+  group_by(1) %>%  
+  summarise(max = max(created), min = min(created))
+
+ukraineretweets2 <- ukraineretweets %>%  mutate(Created_At_Round = 
+                        created %>% round(units = 'hours') %>% as.POSIXct())
+
+slava <- ukraineretweets %>% pull(created) %>% min()
+
+ukrani <- ukraineretweets %>% pull(created) %>% max()
+```
+\hfill\break
+#Plotting the retweets using gglplot and library
+\hfill\break
+```{R}
+zelensky <- ggplot(ukraineretweets2, aes(x = Created_At_Round)) +
+  geom_histogram(aes(fill = ..count..)) +
+  theme(legend.position = "right") +
+  xlab("Time") + ylab("Number of tweets") + 
+  scale_fill_gradient(low = "yellow", high = "blue")
+
+zelensky %>% ggplotly()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
